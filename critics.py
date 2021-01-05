@@ -95,7 +95,7 @@ class AttentionCritic(nn.Module):
         """
         Inputs:
             inps (list of PyTorch Matrices): Inputs to each agents' encoder
-                                             (batch of obs + ac) ; [[1024,18],[1024,5]]
+                                             (batch of obs + ac) 
             agents (int): indices of agents to return Q for
             return_q (bool): return Q-value
             return_all_q (bool): return Q-value for all actions
@@ -125,7 +125,6 @@ class AttentionCritic(nn.Module):
         other_all_values = [[] for _ in range(len(agents))]
         all_attend_logits = [[] for _ in range(len(agents))]
         all_attend_probs = [[] for _ in range(len(agents))]
-        # calculate attention per head
         # attention is calculated per head for every agent
         for curr_head_keys, curr_head_values, curr_head_selectors in zip(
                 all_head_keys, all_head_values, all_head_selectors):
