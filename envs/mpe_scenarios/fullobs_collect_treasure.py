@@ -154,7 +154,7 @@ class Scenario(BaseScenario):
                                 self.collectors(world) if a.holding == agent.d_i]
             if len(dists_to_holding) > 0:
                 rew -= 0.1 * min(dists_to_holding)
-                # rew += 0.1 * min(dists_to_holding) # here we may have second penalty
+                # rew += 0.1 * min(dists_to_holding) 
 
             else:
                 n_visible = 7
@@ -182,12 +182,11 @@ class Scenario(BaseScenario):
         # penalty += 5 * sum(self.is_collision(agent, a, world)
         #                for a in self.collectors(world) if a is not agent)
         shape = False
-        if agent.holding is None and shape:  # mb:- if agent is not holding any treasure then compute in dist b/w ag & t
+        if agent.holding is None and shape:  
             rew -= 0.1 * min(world.cached_dist_mag[t.i, agent.i] for t in
                              self.treasures(world))
         elif shape:
-            rew -= 0.1 * min(world.cached_dist_mag[d.i, agent.i] for d in  # if ag is holding the treasure for a particu
-                             # -lar deposit bank agent then dist b/w that bank agent and treasure collector agent
+            rew -= 0.1 * min(world.cached_dist_mag[d.i, agent.i] for d in 
                              self.deposits(world) if d.d_i == agent.holding)
 
         # collectors get global reward
