@@ -2,7 +2,7 @@
 
 Code for our paper titled "Attention Actor-Critic algorithm for Multi-Agent Constrained Co-operative Reinforcement Learning". 
 
-Base code is used from Shariq Iqbal's [PyTorch implementation](https://github.com/shariqiqbal2810/MAAC) of MAAC:- https://github.com/shariqiqbal2810/MAAC
+Base code is used from Shariq Iqbal's [PyTorch implementation](https://github.com/shariqiqbal2810/MAAC) of MAAC.
 
 ### Requirements 
 #
