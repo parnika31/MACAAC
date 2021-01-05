@@ -208,8 +208,6 @@ class AttentionSAC(object):
             if logger is not None:
                 logger.add_scalar('agent%i/losses/pol_loss' % a_i,
                                   pol_loss, self.niter)
-                logger.add_scalar('agent%i/grad_norms/pi' % a_i,
-                                  grad_norm, self.niter)
 
     def update_all_targets(self):
         """
