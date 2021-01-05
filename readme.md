@@ -10,6 +10,8 @@ Python 3.7.1
 
 PyTorch, version: 1.1.0 
 
+[OpenAI Baselines](https://github.com/openai/baselines/)
+
 [OpenAI Gym](https://github.com/openai/gym), version: 0.9.4
 
 [Tensorboard](https://github.com/tensorflow/tensorboard), version: 2.1.0
