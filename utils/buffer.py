@@ -104,7 +104,7 @@ class ReplayBuffer(object):
 
     def get_average_penalties(self, N):
         if self.filled_i == self.max_steps:
-            inds = np.arange(self.curr_i - N, self.curr_i)  # allow for negative indexing
+            inds = np.arange(self.curr_i - N, self.curr_i) 
         else:
             inds = np.arange(max(0, self.curr_i - N), self.curr_i)
         return [self.penalty_buffs[i][inds].mean() for i in range(self.num_agents)]
