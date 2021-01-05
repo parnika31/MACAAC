@@ -135,7 +135,6 @@ class AttentionSAC(object):
 
         if logger is not None:
             logger.add_scalar('losses/q_loss', q_loss, self.niter)
-            logger.add_scalar('grad_norms/q', grad_norm, self.niter)
 
     def update_penalty_critic(self, sample, soft=True, logger=None, **kwargs):
         obs, acs, rews, penalties_1, penalties_2, next_obs, dones = sample
@@ -248,8 +247,7 @@ class AttentionSAC(object):
             if logger is not None:
                 logger.add_scalar('agent%i/losses/pol_loss' % a_i,
                                   pol_loss, self.niter)
-                logger.add_scalar('agent%i/grad_norms/pi' % a_i,
-                                  grad_norm, self.niter)
+                
 
     def update_all_targets(self):
         """
