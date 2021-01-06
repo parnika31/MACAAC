@@ -153,10 +153,8 @@ def run(config):
 
                     lag_mul_ls.append(lb_t_)
                     # logger.add_scalar('penalty_q', penalty_q.mean(), ep_i)
-
-                # Lagrange Parameter for next ts is the mean over lag parameters computed for all num_updates
+                    
                 lb_t = torch.from_numpy(np.asarray(lag_mul_ls)).mean()
-
                 model.prep_rollouts(device='cpu')
 
         # Total costs and penalties over an entire episode
@@ -164,7 +162,6 @@ def run(config):
         all_penalties.append(np.sum(episode_penalties))
 
         # Mean of total costs and penalties over latest 1024 episodes
-
         log_rew = np.mean(all_rewards[-1024:])
         log_penalty1 = np.mean(all_penalties[-1024:])
 
