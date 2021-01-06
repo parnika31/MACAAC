@@ -165,7 +165,6 @@ def run(config):
                     lag_mul_ls.append((lb_t_1_, lb_t_2_))
 
                 model.update_niter()
-                # Lagrange Parameter for the next ts is the mean over lag parameters computed for all num_updates
                 lb_t_1 = torch.from_numpy(np.asarray([m[0] for m in lag_mul_ls])).mean()
                 lb_t_2 = torch.from_numpy(np.asarray([m[1] for m in lag_mul_ls])).mean()
 
