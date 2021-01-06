@@ -41,13 +41,14 @@ def run(config):
     all_rewards = []
     all_coll_penalties = []
     all_dep_penalties = []
-
+    
+    # initialize lagrange parameters
     lb_t_1 = torch.from_numpy(np.random.rand(1)).float()
     lb_t_2 = torch.from_numpy(np.random.rand(1)).float()
 
-    b_t = config.b_t
-    alpha_1 = config.alpha_1
-    alpha_2 = config.alpha_2
+    b_t = config.b_t # slower timescale value
+    alpha_1 = config.alpha_1 # threshold on the number of collectors collision
+    alpha_2 = config.alpha_2 # threshold on the number of depositors collision
 
     model_dir = Path('./models') / config.env_id / config.model_name
     if not model_dir.exists():
@@ -181,8 +182,8 @@ def run(config):
         logger.add_scalar("Mean cost over latest 1024 epi/Training:-", log_rew, ep_i)
         logger.add_scalar("Mean penalty_1 over latest 1024 epi/Training:-", log_penalty1, ep_i)
         logger.add_scalar("Mean penalty_2 over latest 1024 epi/Training:-", log_penalty2, ep_i)
-        logger.add_scalar('lbt1', lb_t_1, ep_i)
-        logger.add_scalar('lbt2', lb_t_2, ep_i)
+        #logger.add_scalar('lbt1', lb_t_1, ep_i)
+        #logger.add_scalar('lbt2', lb_t_2, ep_i)
 
         if ep_i % config.save_interval < config.n_rollout_threads:
             model.prep_rollouts(device='cpu')
