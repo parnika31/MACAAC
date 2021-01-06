@@ -163,7 +163,7 @@ class AttentionSAC(object):
             for reg in regs:
                 pen_q_loss += reg  # regularizing attention
         pen_q_loss.backward()
-        penalty_helper = torch.from_numpy(asarray([ret[0].mean() for ret in critic_rets], dtype=float)).detach()
+        penalty_q = torch.from_numpy(asarray([ret[0].mean() for ret in critic_rets], dtype=float)).detach()
         self.penalty_critic.scale_shared_grads()
         grad_norm = torch.nn.utils.clip_grad_norm_(
             self.penalty_critic.parameters(), 10 * self.nagents)
@@ -190,7 +190,7 @@ class AttentionSAC(object):
             for reg in regs:
                 pen2_q_loss += reg  # regularizing attention
         pen2_q_loss.backward()
-        penalty_helper_new = torch.from_numpy(asarray([ret[0].mean() for ret in nw_critic_rets],dtype=float)).detach()
+        penalty2_q = torch.from_numpy(asarray([ret[0].mean() for ret in nw_critic_rets],dtype=float)).detach()
         self.penalty2_critic.scale_shared_grads()
         grad_norm = torch.nn.utils.clip_grad_norm_(
             self.penalty2_critic.parameters(), 10 * self.nagents)
@@ -200,7 +200,7 @@ class AttentionSAC(object):
         if logger is not None:
             logger.add_scalar('losses/penalty_loss_new', pen2_q_loss, self.niter)
 
-        return penalty_helper, penalty_helper_new
+        return penalty_q, penalty2_q
 
     def update_policies(self, sample, soft=True, logger=None, **kwargs):
         obs, acs, rews, penalties_1,penalties_2, next_obs, dones = sample
