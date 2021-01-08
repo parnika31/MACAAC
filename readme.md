@@ -1,6 +1,6 @@
 # **Multi Agents Constrained Attention Actor Critic**
 
-Code for our paper titled "Attention Actor-Critic algorithm for Multi-Agent Constrained Co-operative Reinforcement Learning". 
+Code for our paper [Attention Actor-Critic algorithm for Multi-Agent Constrained Co-operative Reinforcement Learning](https://arxiv.org/abs/2101.02349). 
 
 Base code is adopted from Shariq Iqbal's [PyTorch implementation](https://github.com/shariqiqbal2810/MAAC) of the paper [Actor-Attention-Critic for Multi-Agent Reinforcement Learning](https://arxiv.org/pdf/1810.02912.pdf).
 
