@@ -1,4 +1,4 @@
-# **Multi Agents Constrained Attention Actor Critic**
+# **Multi Agent Constrained Attention Actor Critic**
 
 Code for our paper [Attention Actor-Critic algorithm for Multi-Agent Constrained Co-operative Reinforcement Learning](https://arxiv.org/abs/2101.02349). 
 
